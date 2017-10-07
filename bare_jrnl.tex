@@ -640,7 +640,7 @@ University of Technology Sydney, NSW 2007, Australia and Department of Computer 
 % As a general rule, do not put math, special symbols or citations
 % in the abstract or keywords.
 \begin{abstract}
-Decoherence-free subsystems have been successfully developed as a tool to preserve fragile quantum information against noises.  In this work, we develop a structure theory for decoherence-free subsystems. Consequently, we propose an effective algorithm to find all decoherence-free subsystems for any given quantum super-operator. Furthermore, we give an easy way to pick up faulty-tolerant ones from them. Using these mathematical techniques, we obtain a numerical and simple method to obtain a basis for any tensor, generating  a family of matrix product states.
+Decoherence-free subsystems have been successfully developed as a tool to preserve fragile quantum information against noises.  In this work, we develop a structure theory for decoherence-free subsystems. Consequently, we propose an effective algorithm to find an optimal set of  decoherence-free subsystems for any given quantum super-operator such that any other such subsystem is a subspace of one of them. Furthermore, we give an easy way to pick up faulty-tolerant ones from them. Using these mathematical techniques, we obtain a simple numerical  method to obtain a basis for any tensor, generating  a family of matrix product states.
 \end{abstract}
 
 % Note that keywords are not normally used for peerreview papers.
@@ -685,13 +685,14 @@ decoherence-free subsystems, continuous coherences, faulty-tolerance, matrix pro
 % You must have at least 2 lines in the paragraph with the drop letter
 % (should never be an issue)
 build large scale quantum computers, the obstacles, such as decoherences and noises,  must be managed and overcome~\cite{nielsen2010quantum}. One of the effective methods for this purpose is through
-decoherence-free subspaces proposed by Daniel A. Lidar in \cite{lidar1998decoherence}. A subspace of the system Hilbert space is said to be decoherence-free if the effect of the noise on it is simply unitary, and thus easily correctable. For this sake, decoherence-free subspaces are important subjects in quantum computing, where coherent control of quantum systems is often the desired goal \cite{lidar2012review}. On the other hand, such subspaces \yf{so here `such' means `decoherence-free'} can also be characterized as a special case of quantum error correcting codes to preserve quantum information against noises \cite{lidar2012review}.    Subsequently, E. Knill, R. Laflamme, and L. Viola generalized the subspaces setting \yf{so here `the subspaces setting' means `noiseless' subspaces!} to subsystems, called noiseless subsystems requiring the evolution to be strict identity \yf{`requiring the evolution to be strict identity' is not a generalization; it is a restriction}, by extending higher-dimensional irreducible representations of the algebra generating the dynamical symmetry in the system-environment interaction \cite{knill2000theory}. Such noiseless subsystems have been fully characterized and intensely studied in \cite{choi2006method,blume2010information,beny2007generalization,kribs2006quantum,kribs2005unified}. Remarkably, a structure theory was proposed in \cite{choi2006method}, leading to an algorithm which finds all noiseless subsystems for a given quantum super-operator \cite{knill2006protected,wang2013numerical}. In the meanwhile, the general case, decoherence-free subsystems, was examined and the conditions for their existence were found in \cite{shabani2005theory}, and subsystems with significantly reduced noises  were considered in \cite{wang2016minimal}. However, a clear picture of decoherence-free subsystems is still lacking. 
+decoherence-free subspaces proposed by Daniel A. Lidar in \cite{lidar1998decoherence}. A subspace of the system Hilbert space is said to be decoherence-free if the effect of the noise on it is simply unitary, and thus easily correctable. For this sake, decoherence-free subspaces are important subjects in quantum computing, where coherent control of quantum systems is often the desired goal \cite{lidar2012review}. On the other hand, decoherence-free subspaces  can also be characterized as a special case of quantum error correcting codes to preserve quantum information against noises \cite{lidar2012review}. However, we do not need to restrict the decoherence-free dynamics to a subspace. E. Knill, R. Laflamme, and L. Viola introduced  the concept of noiseless subsystems, by extending higher-dimensional irreducible representations of the algebra generating the dynamical symmetry in the system-environment interaction \cite{knill2000theory}. A subsystem is a factor in a tensor product decomposition of a subspace and 
+the noiseless subsystem requires the evolution on it to be strict identity. Such noiseless subsystems have been fully characterized and intensely studied in \cite{choi2006method,blume2010information,beny2007generalization,kribs2006quantum,kribs2005unified}. Remarkably, the structure theory of noiseless subsystems  was proposed in \cite{choi2006method}, leading to an algorithm which finds all noiseless subsystems for a given quantum super-operator \cite{knill2006protected,wang2013numerical}. In the meanwhile, the general case of decoherence-free subspaces and noiseless subsystems, called decoherence-free subsystems, was examined and the conditions for their existence were found in \cite{shabani2005theory}, and subsystems with significantly reduced noises  were considered in \cite{wang2016minimal}. However, a clear picture of the structure of  decoherence-free subsystems (subspaces) is still lacking such that we can not compute all decoherence-free subsystems (subspaces) or the highest-dimensional ones for any given quantum super-operator. 
 
-In this paper,  we develop a structure theory that shows precisely how a super-operator, the evolution of a quantum system, determines its decoherence-free subsystems, generating the existing results for noiseless subsystems. Interestingly, decoherence-free subsystems consist of noiseless subsystems \yf{make it more clear!}. As an application, we are able to algorithmically compute all decoherence-free subsystems for a given super-operator. We then consider decoherence-free subsystems with error tolerance and obtain a necessary and sufficient condition for  determine those, which can be easily checked. \yf{this sentence is not clear} 
-We further use this mathematical tool in quantum many-body systems and propose a simple numerical method to derive a basis for any tensor, generating a family of matrix product states. 
+In this paper,  we develop a structure theory that shows precisely how a super-operator, the evolution of a quantum system, determines its decoherence-free subsystems, generating the existing results for noiseless subsystems. As an application, we develop an algorithm (Algorithm 1) to generate an optimal set of decoherence-free subsystems for any given super-operator such that any other decoherence-free subsystem is a subspace of one of them. We then consider decoherence-free subsystems with error tolerance, the    and obtain a necessary and sufficient condition for  determining those.  Checking this condition is a linear algebra exercise.
+We further use this mathematical tool in the quantum many-body system described by a family of matrix product states generated by a tensor and propose a  simple method to numerically derive   a basis for the tensor. The basis plays an important role in fundamental theorems of Matrix product states \cite{cirac2017matrix,cuevas2017irreducible}.
 
-This paper is organized as follows. We recall some basic notions of quantum information theory and introduce continuous coherences in Section \uppercase\expandafter{\romannumeral2}. In Section \uppercase\expandafter{\romannumeral3}, we review the structure theory of noiseless subsystems by studying the fixed points of super-operators. We then show a similar structure theory of decoherence-free subsystems in Section \uppercase\expandafter{\romannumeral4}, which leads to an algorithm of constructing all such subsystems for a given super-operator. In Section \uppercase\expandafter{\romannumeral5}, we present a necessary and sufficient condition for checking whether or not a decoherence-free subsystem is faulty-tolerant. Furthermore, 
-we apply previous results on  quantum many-body systems and obtain a simple numeral method to find a basis for any tensor, generating a set of matrix product states  \yf{the same sentence appears three times. Please consider to rephrase it}  in Section \uppercase\expandafter{\romannumeral6}. A brief conclusion is drawn in the last section.
+This paper is organized as follows. We recall some basic notions of quantum information theory and introduce one central concept, continuous coherences in Section \uppercase\expandafter{\romannumeral2}. In Section \uppercase\expandafter{\romannumeral3}, we review the structure theory of noiseless subsystems by studying the fixed points of super-operators. We then show a similar structure theory of decoherence-free subsystems in Section \uppercase\expandafter{\romannumeral4}, which leads to an algorithm of constructing an optimal set of  such subsystems for a given super-operator. In Section \uppercase\expandafter{\romannumeral5}, we present a necessary and sufficient condition for checking whether or not a decoherence-free subsystem is faulty-tolerant. Furthermore, 
+we apply previous results to find a basis for any tensor, generating a set of matrix product states to represent a quantum many-body system  in Section \uppercase\expandafter{\romannumeral6}. A brief conclusion is drawn in the last section.
 
 \section{Preliminaries}
 
@@ -714,11 +715,6 @@ Applying the techniques developed in \cite{ying2013reachability,baumgartner2012s
   \h=\bigoplus_{p=1}^m\h_p\bigoplus\k.
 \end{eqnarray}
 Furthermore, the Kraus operators $\{E_k\}$ of $\e$ have the  corresponding block form:
-$$E_k=\left[\begin{matrix}
-  \oplus_{p=1}^m E_{k,p} & T_k\\
-0&K_k
-\end{matrix}\right]$$
-\yf{better to write it explicitly:
 $$\renewcommand{\arraystretch}{1.2}
 E_k=\left[\begin{array}{c|c}
   \begin{array}{cccc}
@@ -730,7 +726,6 @@ E_k=\left[\begin{array}{c|c}
   \hline
 0&K_k
 \end{array}\right]$$
- }
  for some operators $E_{k,p}\in B(\h_p)$, $K_k\in B(\k)$, and $T_k$ from $\k$ to $\k^\perp$. 
 We then define a set of associated maps $\{\e_{p,q} : p,q = 1, \dots, m\}$ of $\e$:
 \begin{eqnarray}\label{Eq_ass_maps}
@@ -740,14 +735,14 @@ Obviously, for any $p$ and $q$, $\e_{p,q}$ is a linear  map from $C(\h_p,\h_q)$ 
 \[
 	C(\h_p,\h_q)=\textrm{lin.span}\{|\psi_{p}\rangle\langle\psi_q | : |\psi_{p}\rangle\in \h_{p}, |\psi_{q}\rangle\in \h_{q}\}
 \]
-is the coherence from $\h_q$ to $\h_p$. If $p=q$, then $\e_{p,q}$ is a super-operation on $\h_p$ and $C(p,q)$ \yf{$C(\h_p,\h_q)$?} is said to be inner; otherwise it is outer. 
+is the coherence from $\h_q$ to $\h_p$. If $p=q$, then $\e_{p,q}$ is a super-operator on $\h_p$ and $C(\h_p,\h_q)$  is said to be inner; otherwise it is outer. 
 
 For all $p$ and $q$, the following two properties are easy to observe:
 \begin{enumerate}
 \item $C(\h_p,\h_q)$ is invariant under $\e$; that is, for all $A\in C(\h_p,\h_q)$, $\e(A)\in C(\h_p,\h_q)$.
-\item  $\eta(\e_{p,q})\subseteq \eta(\e)$, where $\eta(\cdot)$ is the set of eigenvalues of a linear map. \yf{we normally use $\lambda(\cdot)$ to denote the spectrum of a linear operator}
+\item  $\lambda(\e_{p,q})\subseteq \lambda(\e)$, where $\lambda(\cdot)$ is the set of eigenvalues of a linear map.
 \end{enumerate}
-Furthermore, a coherence $C(\h_p,\h_q)$ is said to be continuous  if there exists $A\in C(\h_p,\h_q)$ such that $\e(A)=e^{i\theta}A$ for some real number $\theta$; that is, $\eta(\e_{p,q})$ has an element with magnitude one.  Specially, if $\theta=0$, then the coherence is stationary. Obviously, inner coherences are always stationary because a super-operator has at least one stationary state. Stationary coherences have been intensely studies in~\cite{baumgartner2012structure}, where a nice structure of $fix(\e)$, the set of fixed points of super-operator $\e$, is discovered. We will restate this result in the next section.
+Furthermore, a coherence $C(\h_p,\h_q)$ is said to be continuous  if there exists $A\in C(\h_p,\h_q)$ such that $\e(A)=e^{i\theta}A$ for some real number $\theta$; that is, $\lambda(\e_{p,q})$ has an element with magnitude one.  Specially, if $\theta=0$, then the coherence is stationary. Obviously, inner coherences are always stationary because a super-operator has at least one stationary state. Stationary coherences have been intensely studies in~\cite{baumgartner2012structure}, where a nice structure of $fix(\e)$, the set of fixed points of super-operator $\e$, is discovered. We will restate this result in the next section.
 \begin{definition}\label{def_dfs}
   Given a super-operator $\e$ on $\h$ with $\h=\h_A\bigotimes \h_B\bigoplus\k$, subsystem $\h_A$ is decoherence-free if there exists an unitary matrix $U_A$ on $\h_A$ such that for any $\rho_A\in D(\h_A)$ and $\rho_B\in D(\h_B),$
   \begin{eqnarray}\label{eq_dfs_def}
@@ -763,13 +758,11 @@ Noiseless subsystems are a special case of decoherence-free subsystems and have 
 To characterize $fix(\e)$, the main step is to identify stationary coherences of minimal subspaces in  the decomposition of Eq.(\ref{eq_mini_dec}) and this can be achieved  by the following lemma.
 
 \begin{lemma}[\cite{baumgartner2012structure}]\label{Lem_SC}
-  Let $\e$ be a super-operator on $\h$ with a set of associated maps $\{\e_{p,q}\}$ in Eq.(\ref{Eq_ass_maps}). For any $p$ and $q$,  $C(\h_p,\h_q)$ is stationary if and only if there is a unitary matrix $U$ such that 
-  $E_{k,p}=UE_{k,q}U^\dagger$ for all $k$, where $\{E_{k,p}\}_k$ and $\{E_{k,q}\}_k$ are Kraus operators of $\e_{p,p}$ and $\e_{q,q}$, respectively.  Furthermore, $\h_p\simeq\h_q.$
-    \yf{This lemma can be restated without $\{\e_{p,q}\}$. Why do you bother mentioning them?}
+  Let $\e$ be a super-operator on $\h$. For any two orthogonal minimal subspaces $\h_p$ and $\h_q$,  $C(\h_p,\h_q)$ is stationary if and only if there is a unitary matrix $U$ such that 
+  $E_{k,p}=UE_{k,q}U^\dagger$ for all $k$, where $\{E_{k,p}\}_k$ and $\{E_{k,q}\}_k$ are the restriction of  Kraus operators of $\e$ onto $\h_p$ and $\h_q$, respectively.  Furthermore, $\h_p\simeq\h_q.$
 \end{lemma}
 
-By the above lemma, given a set of mutually orthogonal minimal subspaces $\{\h_p\}_{p=1}^{m}$, the existence of stationary coherence is an equivalence relation \yf{why an equivalence relation?}. Hence, we can simply say that  there is a stationary coherence between any two orthogonal minimal subspaces $\h_1$ and $\h_2$ without referring the direction from $\h_1$ to $\h_2$ or from $\h_2$ to $\h_1$. 
-\yf{How about changing these sentences to: From Lemma~\ref{Lem_SC}, $C(\h_p,\h_q)$ is stationary if and only if so is $C(\h_q,\h_p)$. Thus in the following, we simply say that there is a stationary coherence between $\h_p$ and $\h_q$ without referring to the direction.}
+ From Lemma~\ref{Lem_SC}, $C(\h_p,\h_q)$ is stationary if and only if so is $C(\h_q,\h_p)$. Thus in the following, we simply say that there is a stationary coherence between $\h_p$ and $\h_q$ without referring to the direction.
 Furthermore,  we group together minimal subspaces by stationary coherences and obtain a structure of $fix(\e)$ as follows. 
 \begin{theorem}[\cite{baumgartner2012structure}]\label{Theo_NS_Dec}
   Let $\e$ be a super-operator on $\h$. There is a unique  orthogonal decomposition of $\h$
@@ -784,25 +777,20 @@ Furthermore,  we group together minimal subspaces by stationary coherences and o
     \end{eqnarray} 
    where for all $p$, $\b_l\simeq \b_{l,p}$. Furthermore, the Kraus operators $\{E_k\}$ of $\e$ have a corresponding block form:
   \begin{eqnarray}\label{Eq_SC_dec_Kraus}
-    E_k=\left[\begin{matrix}
-  \oplus_l I_{l}\otimes E_{k,l} & T_k\\
-0&K_k
-\end{matrix}\right]
-  \end{eqnarray}
-  \yf{better to write it explicitly:
-$$\renewcommand{\arraystretch}{1.2}
+    \renewcommand{\arraystretch}{1.2}
 E_k=\left[\begin{array}{c|c}
   \begin{array}{ccc}
   I_{1}\otimes E_{k,1} &  &\\
    & \ddots &\\
-   & & I_{m}\otimes E_{k,m}  
+   & & I_{L}\otimes E_{k,L}  
   \end{array} & T_k\\
   \hline
 0&K_k
-\end{array}\right]$$
- }
-for some operators $E_{k,l}\in B(\b_l)$, $K_k\in B(\k)$, and $T_k$ from $\k$ to $\k^\perp$. Here  $I_{l}$ is the identity operator on $\mathbb{C}^{m_l}$. Moreover, $\b_l$ is irreducible under $\e_{l}(\cdot)=E_{k,l}\cdot E_{k,l}^\dagger$. Then \yf{where is the `if' for the `then'?}
-    $$fix(\e)=\bigoplus_{l=1}^m\left[B(\mathbb{C}^{m_l})\bigotimes \rho_{l}\right]\bigoplus 0_\k $$
+\end{array}\right]
+  \end{eqnarray}
+
+for some operators $E_{k,l}\in B(\b_l)$, $K_k\in B(\k)$, and $T_k$ from $\k$ to $\k^\perp$. Here  $I_{l}$ is the identity operator on $\mathbb{C}^{m_l}$. Moreover, $\b_l$ is irreducible under $\e_{l}(\cdot)=E_{k,l}\cdot E_{k,l}^\dagger$. In this decomposition, 
+$$fix(\e)=\oplus_{l}[B(\mathbb{C}^{m_l})\otimes \rho_{l}]\oplus 0_\k $$
     where $\rho_l$ is the unique stationary state of $\e_{l}$, and $0_\k$ is the zero operator on $\k$.
     \item[(3)] there are no stationary coherences between minimal subspaces $\x_{l_1}$ and $\x_{l_2}$ whenever $l_{1}\neq l_2.$
       \end{itemize}
@@ -816,9 +804,18 @@ Actually, as the following theorem shows, all noiseless subsystems have been cap
     a subsystem $\h_A$ is noiseless if and only if $\h_A\subseteq \mathbb{C}^{m_l}$ for some $l$.
 \end{theorem}
 
-The decomposition in Theorem~\ref{Theo_NS_Dec} can also be obtained by applying the structure of  $C^*$-algebra generated by the Kraus operators of $\e$; see \cite{choi2006method} for details. Sequentially \yf{Subsequently?}, some algorithms for implementing the above decompositions in Eqs.(\ref{Eq_NS_dec_unique}-\ref{Eq_SC_dec_Kraus}) were developed from these two different methods \yf{which two different methods?} \cite{guan2016decomposition,knill2006protected,wang2013numerical}.  Such algorithms will be referred as NSDecompose($\h,\e$) in this paper and the time complexity is $O(n^{8})$, where dim$(\h)=n$. 
+The decomposition in Theorem~\ref{Theo_NS_Dec} can also be obtained by applying the structure of  $C^*$-algebra generated by the Kraus operators of $\e$; see \cite{choi2006method} for details. Subsequently, some algorithms for implementing the above decompositions in Eqs.(\ref{Eq_NS_dec_unique}-\ref{Eq_SC_dec_Kraus}) were developed from the structure of the $C^*$-algebra   or $fix(\e)$   \cite{guan2016decomposition,knill2006protected,wang2013numerical}.  Such algorithms will be referred as NSDecompose($\h,\e$) in this paper and the time complexity is $O(n^{8})$, where dim$(\h)=n$. 
 
-\yf{Better to have some running examples here...}
+\begin{example}
+  Given Hilbert space $\h=\mathbb{C}^4\bigotimes \mathbb{C}^3$ with associated basis $\{|k\rangle_1\}_{k=0}^3$ and $\{|k\rangle_2\}_{k=0}^2$, let $\e$ be super-operator on it and the Kraus operators are:
+  \begin{eqnarray*}
+    E_{1}&=&|00\rangle\langle01|+|10\rangle\langle11|-|20\rangle\langle21|-|30\rangle\langle31|\\
+    E_{2}&=&|01\rangle\langle00|+|11\rangle\langle10|-|21\rangle\langle20|-|31\rangle\langle30|\\
+    E_{3}&=&|00\rangle\langle02|+|10\rangle\langle12|-|20\rangle\langle22|-|30\rangle\langle32|
+  \end{eqnarray*}
+  where $|kl\rangle=|k\rangle_1\otimes |l\rangle_2$. Obviously, the unique decomposition in Theorem~\ref{Theo_NS_Dec} is $$\h=\bigoplus_{l=1}^2(\h_l\bigotimes \h') \bigoplus\k$$
+  where $\h_1=\textrm{lin.span}\{|0\rangle_1,|1\rangle_1\}$, $\h_2=\textrm{lin.span}\{|2\rangle_1,|3\rangle_1\}$, $\h'=\textrm{lin.span}\{|0\rangle_2,|1\rangle_2\}$ and $\k=(\bigoplus_{l=1}^2(\h_l\bigotimes \h'))^{\perp}.$ Then we can store 2-qubit quantum information in $\h_1$ or $\h_2$.
+\end{example}
 
 \section{Decoherence-free Subsystems}
 In this section, a generalized decomposition of Theorem~\ref{Theo_NS_Dec} will be shown, which also indicates a structure theorem of decoherence-free subsystems. Using these results, we can develop an efficient algorithm to find all such subsystems for any given super-operator. 
@@ -841,8 +838,8 @@ First, we observe that  decoherence-free subsystems consist of minimal subspaces
 
 Therefore, studying continuous coherences are an interesting problem. The essential issue is to verify continuous coherences for a given mutually orthogonal minimal subspaces. Then such minimal subspaces are candidates for constructing a decoherence-free subsystem.
 \begin{lemma}\label{lem_block_eq}
-  Let $\e$ be a super-operator on $\h$ with a set of associated maps $\{\e_{p,q}\}$ in Eq.(\ref{Eq_ass_maps}). For any $p$ and $q$,  $C(\h_p,\h_q)$ is continuous if and only if $\e_{p,p}$ is unitarily equivalent to $\e_{q,q}$; that is there is a unitary matrix $U$ and a real number $\theta$ such that 
-  $$E_{k,p}=e^{i\theta}UE_{k,q}U^\dagger \ \forall k,$$  where $\{E_{k,p}\}_k$ and $\{E_{k,q}\}_k$ are Kraus operators of $\e_{p,p}$ and $\e_{q,q}$, respectively.  Furthermore, $\h_p\simeq\h_q.$
+  Let $\e$ be a super-operator on $\h$. For any twoorthogonal minimal subspaces $\h_p$ and $\h_q$,  $C(\h_p,\h_q)$ is continuous if and only if  there is a unitary matrix $U$ and a real number $\theta$ such that 
+  $$E_{k,p}=e^{i\theta}UE_{k,q}U^\dagger \ \forall k,$$  where $\{E_{k,p}\}_k$ and $\{E_{k,q}\}_k$ are the restriction of Kraus operators of $\e$ onto $\h_p$ and $\h_q$, respectively.  Furthermore, $\h_p\simeq\h_q.$ 
 \end{lemma}
 {\it Proof.} 
 Assume that $C(\h_p,\h_q)$ is continuous; that is  there is a matrix $A\in C(\h_p,\h_q)$ such that $\e(A)=e^{i\theta}A$ for some real number $\theta$. Then let $V=e^{-i\theta}P_p+I-P_p$, where $P_p$ is the projector onto $\h_p$,  and  $\v\circ\e(A)=A$, where $\v(\cdot)=V\cdot V^\dagger$. Moreover, it is obvious that $\h_p$ and $\h_q$ are also two orthogonal minimal subspaces under $\v\circ\e$  by the decomposition Eq.(\ref{eq_mini_dec}). Therefore, there is a stationary coherence from $\h_q$ to $\h_p$ under $\v\circ\e.$ Then from lemma \ref{Lem_SC} and the minimal decomposition of $\v\circ\e$, we have $\h_p\simeq\h_q$ and 
@@ -854,7 +851,7 @@ Transforming $\e_{p,q}$ to its matrix representation in \cite{guan2016decomposit
   M_{p,q}&=&\sum_k e^{i\theta}UE_{k,q}U^\dagger\otimes E_{k,q}^{*}\\
   &=&e^{i\theta}(U\otimes I)(\sum_k E_{k,q}\otimes E_{k,q}^{*})(U^\dagger\otimes I)
 \end{eqnarray*}
-As $\eta(M_{p,q})=\eta(\e_{p,q})$ and $(\sum_k E_{k,q}\otimes E_{k,q}^{*})$ is the matrix presentation of $\e_{q,q}$ which is a super-operator and has 1 as its eigenvalues, $e^{i\theta}\in\eta(\e_{p,q}).$  
+As $\lambda(M_{p,q})=\lambda(\e_{p,q})$ and $(\sum_k E_{k,q}\otimes E_{k,q}^{*})$ is the matrix presentation of $\e_{q,q}$ which is a super-operator and has 1 as its eigenvalues, $e^{i\theta}\in\lambda(\e_{p,q}).$  
 \hfill $\Box$
 
 The above lemma is a generalization of Lemma~\ref{lem_block_eq} in which stationary coherences need the Kraus operators are one-by-one unitarily equivalent. 
@@ -880,13 +877,20 @@ Furthermore, we can decompose the whole Hilbert space into finite equivalent cla
       \x_l=\bigoplus_{p=1}^{m_l}\b_{l,p}\simeq\mathbb{C}^{m_l}\bigotimes \b_l, \ \ \b_l\simeq \b_{l,p} \ \forall p
     \end{eqnarray} 
     such that the Kraus operators $\{E_k\}$ have a corresponding block form of :
-  \begin{eqnarray}\label{Eq_CC_dec_Kraus}
-    E_k=\left[\begin{matrix}
-  \oplus_l U_{l}\otimes E_{k,l} & T_k\\
+  
+     \begin{eqnarray}\label{Eq_CC_dec_Kraus}
+    \renewcommand{\arraystretch}{1.2}
+E_k=\left[\begin{array}{c|c}
+  \begin{array}{ccc}
+  U_{1}\otimes E_{k,1} &  &\\
+   & \ddots &\\
+   & & U_{L}\otimes E_{k,L}  
+  \end{array} & T_k\\
+  \hline
 0&K_k
-\end{matrix}\right]
+\end{array}\right]
   \end{eqnarray}
-for some operators $E_{k,l}\in B(\b_l)$, $K_k\in B(\k)$, $T_k$ from $\k$ to $\k^\perp$, and    unitary matrix $U_l=diag(e^{i\theta_{l,1}},\cdots,e^{i\theta_{l,m_l}})$ for some real numbers $\{\theta_{l,p}\}_{p=1}^{m_l}$ on $\mathbb{C}^{m_l}$. Moreover, $\b_l$ is irreducible under $\e_{l}:=\sum_{k}E_{k,l}\cdot E_{k,l}^\dagger$ for all $l$. Then
+for some operators $E_{k,l}\in B(\b_l)$, $K_k\in B(\k)$, $T_k$ from $\k$ to $\k^\perp$, and    unitary matrix $U_l=diag(e^{i\theta_{l,1}},\cdots,e^{i\theta_{l,m_l}})$ for some real numbers $\{\theta_{l,p}\}_{p=1}^{m_l}$ on $\mathbb{C}^{m_l}$. Moreover, $\b_l$ is irreducible under $\e_{l}:=\sum_{k}E_{k,l}\cdot E_{k,l}^\dagger$ for all $l$. In this decomposition,
 $$fix(\e)=\oplus_l[fix(\u_{l})\otimes \rho_l]\oplus 0_\k$$ 
 where $\u_l(\cdot)=U_l\cdot U_l^\dagger$. %Furthermore, for any $A\in B(\h)$ with $\e(A)=e^{i\theta}A$ for some $\theta$, $A$ can be written as:
 %\begin{eqnarray}
@@ -915,10 +919,18 @@ Furthermore, for each $l$, $\x_l$ can be further decomposed to mutually orthogon
 $$\x_l=\bigoplus_{p=1}^{m_l}\b_{l,p}$$
 By Lemma~\ref{lem_block_eq}, %we have that $\{\e_{l,p}\}_p$ is a set of quantum operation which are unitarily equivalent to each other. So 
 in  an appropriate decomposition  of $\x_l=\bigoplus_{p=1}^{m_l}\b_{l,p}\simeq \mathbb{C}^{m_l}\bigotimes \b_l$ and $\b_l\simeq \b_{l,p}$ for all $p$:
-$$E_k=\left[\begin{matrix}
-  \oplus_l U_{l}\otimes E_{k,l} & T_k\\
+\begin{eqnarray}
+    \renewcommand{\arraystretch}{1.2}
+E_k=\left[\begin{array}{c|c}
+  \begin{array}{ccc}
+  U_{1}\otimes E_{k,1} &  &\\
+   & \ddots &\\
+   & & U_{L}\otimes E_{k,L}  
+  \end{array} & T_k\\
+  \hline
 0&K_k
-\end{matrix}\right ]$$
+\end{array}\right]
+  \end{eqnarray}
 and $\b_l$ is irreducible under $\e_{l}:=\sum_{k}E_{k,l}\cdot E_{k,l}^\dagger$  for all $l$, 
 where $U_l=diag(e^{i\theta_{l,1}},\cdots,e^{i\theta_{l,m_l}})$ for a set of real numbers $\{\theta_{l,p}\}_{p=1}^{m_l}.$  From Theorem~\ref{Theo_NS_Dec} and noting that stationary coherences is continuous, we have that 
 $$fix(\e)=\oplus_l[fix(\u_{l})\otimes \rho_l]\oplus 0_\k.$$ 
@@ -933,9 +945,10 @@ $$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k,$$ for any minimal
 
  The above theorem shows  minimal subspaces with continuous coherences can construct  decoherence-free subsystem $\mathbb{C}^{m_l}$. Fortunately, we can further show that others are subspaces of the decoherence-free subsystems constructed in Eq.$(\ref{Eq_dec_CC})$.
  \begin{theorem}\label{Theo_find_DFS}
-   Let $\e$ be a super-operator  on $\h$. In a decomposition of $\h$ in Eq.(\ref{Eq_dec_CC}) :
+   Let $\e$ be a super-operator  on $\h$ with the unique decomposition:
 $$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k,$$
-    a subsystem $\h_A$ is decoherence-free if and only if $\h_A\subseteq\mathbb{C}^{m_l}$ for some $l$ and $\h_A$ is a decoherence-free subspace under $\u_l(\cdot)=U_{l}\cdot U_l^\dagger$, where $U_l$ is the corresponding unitary matrix on $\mathbb{C}^{m_l}$ in the decomposition Eq.(\ref{Eq_CC_dec_Kraus}).
+presented in Theorem~\ref{Theo_CC_dec}. Then 
+    subsystem $\h_A$ is decoherence-free if and only if $\h_A\subseteq\mathbb{C}^{m_l}$ for some $l$ and $\h_A$ is a decoherence-free subspace under $\u_l(\cdot)=U_{l}\cdot U_l^\dagger$, where $U_l$ is the corresponding unitary matrix on $\mathbb{C}^{m_l}$ in the decomposition Eq.(\ref{Eq_CC_dec_Kraus}).
  \end{theorem}
  {\it Proof.} Assume that $\h_A$ is decoherence-free. By Theorem~\ref{Theo_CC_dec} and Corollary~\ref{Cor_mini}, $\h_A\subseteq \mathbb{C}^{m_l}$ for some $l.$ From the definition of decoherence-free subsystems and the restriction of $\e$ onto $\mathbb{C}^{m_l}$ being  $\u_l$, $\h_A$ is a decoherence-free subspace under $\u_l$. 
 
@@ -943,19 +956,10 @@ $$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k,$$
 
 These theorem confirms that the set of decoherence-free subsystems identified in Theorem~\ref{Theo_CC_dec} is the largest ones; that is any other is a subspace of one of them. So we only need to implement the decompositions in Theorem~\ref{Theo_CC_dec} and all decoherence-free subsystems can  be easily found by Theorem~\ref{Theo_find_DFS}.
 
-The easy way to do this is transforming all continuous coherences to be stationary and we can use NSDecompose($\h,\e$) to get the results in Theorem~\ref{Theo_CC_dec}. This can be done by the following lemma. 
-\begin{lemma}
-  Let $\e$ be a super-operator on $\h$ with a set of associated maps $\{\e_{p,q}\}$ in Eq.(\ref{Eq_ass_maps}).  For any $p,q$, if $C(\h_p,\h_q)$ is continuous, i.e. there is a unitary matrix $U$ and a real number $\theta$ such that 
-\begin{eqnarray}
-  E_{k,p}=e^{i\theta}UE_{k,q}U^\dagger \ \forall k,
-\end{eqnarray} where $\{E_{k,p}\}_k$ and $\{E_{k,q}\}_k$ are Kraus operators of $\e_{p,p}$ and $\e_{q,q}$, respectively, then \begin{eqnarray}\label{Eq_theta}
-  e^{i\theta}=\frac{\sum_{k=1}^m\lambda_k}{\sum_{k=1}^{m}\mu_k},
-\end{eqnarray} where $\eta(\e_{p,q})=\{\lambda_k\}_{k=1}^{m}$ and $\eta(\e_{q,q})=\{\mu_k\}_{k=1}^{m}$.
-\end{lemma}
+The easy way to do this is transforming all continuous coherences to be stationary and we can use NSDecompose($\h,\e$) to get the results in Theorem~\ref{Theo_CC_dec}. 
 
-{\it Proof.} By the analysis in the proof of Lemma~\ref{lem_block_eq}, the eigenvalues of $\e_{p,q}$ is $e^{i\theta}\eta(\e_{q,q})$. $\hfill$ $\Box$
-
-By the above lemma, we can compute  the relative number $e^{i\theta}$ and let $E'_{k,q}=e^{-i\theta}E_{k,q}$ and $E'_{k,p}=E_{k,p}$. Then $E'_{k,p}=UE'_{k,q}U^\dagger$; a continuous coherence is transformed to be stationary. Using this method, we develop Algorithm 1 to implement decompositions in Theorem~\ref{Theo_CC_dec} and the time complexity is $O(n^8)$. 
+For any two operators $E_{k,p}$ and $E_{k,q}$ in Eq.(\ref{Eq_CC_dec_Kraus}) of Theorem~\ref{Theo_CC_dec}, if they are unitarily equivalent with a phase $\theta$, i.e. $E_{k,p}\simeq e^{i\theta}E_{k,q}$, then 
+ let $E'_{k,q}=e^{i\theta}E_{k,q}$ and $E'_{k,p}=E_{k,p}$. Then $E'_{k,p}$ is unitarily equivalent to $E'_{k,q}$; a continuous coherence is transformed to be stationary. Using this method, we develop Algorithm 1 to implement decompositions in Theorem~\ref{Theo_CC_dec} and the time complexity is $O(n^8)$. 
  \begin{algorithm}
 \caption{Decompose($\h,\e$)}
 \label{Irreducibility}
@@ -975,9 +979,9 @@ By the above lemma, we can compute  the relative number $e^{i\theta}$ and let $E
 \IF{$p\in \l$}
 \FOR{each $q>p$ and $q\in \l$}
 \STATE$M\leftarrow\sum_{k}E_{k,p}\otimes E_{k,q}^{*}$
-\IF{$\eta(M)$ has one element with magnitude one}
-\STATE $e^{i\theta}\leftarrow$ the relative number computed by Eq.(\ref{Eq_theta})
-\STATE $E_{k,q}\leftarrow e^{-i\theta}E_{k,q}$
+\IF{$\lambda(M)$ has one element with magnitude one}
+\STATE $\theta\leftarrow$ $\frac{\sum_{a\in\lambda(E_{k,p})}a}{\sum_{b\in\lambda(E_{k,q})}b}$  
+\STATE $E_{k,q}\leftarrow e^{i\theta}E_{k,q}$
 \STATE $\l\leftarrow \l\setminus\{q\}$
 \ENDIF
 \ENDFOR
@@ -992,6 +996,8 @@ By the above lemma, we can compute  the relative number $e^{i\theta}$ and let $E
 \RETURN NSDecompose($\h,\{E_{k}\}_{k=1}^d$)
 \end{algorithmic}
 \end{algorithm}
+
+Now we back to see Example 1. By Algorithm 1, we can confirm that the first subsystem $\mathbb{C}^4$ is decoherence-free and further compute that the evolution on it is $|0\rangle\langle0|+|1\rangle\langle1|-|2\rangle\langle2|-|3\rangle\langle3|$. Then we can store 4-qubit information in this subsystem, which doubles the capacity of  noiseless subsystems.  
 \section{Perfect and Imperfect Initialization}
  Given a decomposition of $\h=\h_A\bigotimes \h_B\bigoplus\k$, for any $\rho\in D(\h)$, $\rho$ has the following block form:
   \begin{eqnarray}
@@ -1022,7 +1028,7 @@ Obviously, co-subsystem $\h_B$ is important in later case, but is inessential in
 \end{definition}
 
 In the last section, we have obtained a way to compute all decoherence-free subsystem under perfect initialization. Now we need choose faulty-tolerant ones from them.
-\begin{theorem}
+\begin{theorem}\label{Theo_check_FT}
   Let $\e$ be a super-operator  on $\h$. In a decomposition of $\h$ in Eq.(\ref{Eq_dec_CC}) :
 $$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\oplus \k,$$ 
 $\h_A$ is a fault-tolerant decoherence-free subsystem if and only if $\h_A\subseteq \mathbb{C}^{m_l}$ for some $l$ and $\h_A$ is a decoherence-free subsystem under imperfect initialization of $\h=\h_A\bigotimes \b_l\bigoplus \k'$, where $\k'=(\h_A\bigotimes \b_l)^{\perp}.$
@@ -1033,7 +1039,8 @@ For necessary part,  assume that $\h_A$ is decoherence-free under perfect initia
 
 Obviously, if $\h_A$ is decoherence-free under imperfect initialization of $\h=\h_A\bigotimes \h_B\bigoplus\y$ with $\y=(\h_A\bigotimes \h_B)^{\perp}$, then $\h_A$ is also decoherence-free under imperfect initialization of $\h=\h_A\bigotimes \b_l\bigoplus\k',$ as $\h_A\bigotimes \b_l\subseteq \h_A\bigotimes \h_B$. $\hfill$ $\Box$
 
-The above theorem tells us a fact that the co-subsystems identified in Eq.(\ref{Eq_dec_CC}) are sufficient to determine whether a subsystem is a faulty-tolerant  decoherence-free subsystem or not. 
+The above theorem tells us a fact that the co-subsystems identified in Eq.(\ref{Eq_dec_CC}) are sufficient to determine whether a subsystem is a faulty-tolerant  decoherence-free subsystem or not. For example, in Example 1, we can get a decoherence-free subsystem $\mathbb{C}^4$ and the co-subsystem $\h'$ under perfect initialization from Algorithm 1. Then through Theorem~\ref{Theo_check_FT}, 
+we can use the co-subsystem $\h'$ to verify that  $\mathbb{C}^4$ is not faulty-tolerant.
  
 \section{Basis of Matrix Product States}
 Matrix Product States (MPS), a special case of tensor networks (a theoretical and numerical tool describing quantum many-body systems), have proven to be an useful family of quantum states for describing ground states of  one-dimensional quantum many-body systems, which is not scalable due to the exponential growth of the Hilbert space dimension with the number of subsystems \cite{cirac2017matrix}.  
@@ -1057,7 +1064,7 @@ First, we can group irreducible tensors that are essentially the same in the fol
 
 By the definition, $\a$ and $\b$ are repeated, then $|\a\rangle_{n}=e^{in\theta}|\b\rangle_{n}$ for all $n\in \mathbb{N^+}$. Therefore, for any tensor $\a$, we can reduce the set of irreducible tensors  in Eq.(\ref{Eq_MPS}) to be non-repeated. Such simplified set is called a basis of $\a$. The fundamental problem, which relates different tensors rising the same MPS, can be answered by the basis. That is if two tensors have the same MPS, then their basis must be related by a unitary transform \cite{cuevas2017irreducible}. Therefore, determining whether two irreducible tensors are  repeated or not  is a key problem. Even though, such repeatability relation can be verified by Jordan decompositions of matrices by the definition, Jordan decompositions is sensitive to errors and should be avoided in numerical analysis of many body systems. Here we propose a feasible method to finish this by the results of continuous coherences in previous sections. 
 \begin{theorem}
-  Given two irreducible tensors with the same physical dimension $d$, $\a=\{A_{k}\}_{k=1}^{d}$ and $\b=\{B_{k}\}_{k=1}^{d}$, they are repeated if and only if $\eta(\e_{\a,\b})$ has an element with magnitude one, where $\e_{\a,\b}=\sum_{k=1}^d A_{k}\cdot B_{k}^\dagger.$
+  Given two irreducible tensors with the same physical dimension $d$, $\a=\{A_{k}\}_{k=1}^{d}$ and $\b=\{B_{k}\}_{k=1}^{d}$, they are repeated if and only if $\lambda(\e_{\a,\b})$ has an element with magnitude one, where $\e_{\a,\b}=\sum_{k=1}^d A_{k}\cdot B_{k}^\dagger.$
 \end{theorem}
 {\it Proof.} Let $\h_\a$ and $\h_\b$ be the corresponding Hilbert spaces of tensors $\a$ and $\b$, respectively; That is $A_k\in B(\h_\a)$ and $B_k\in B(\h_\b)$ for all $k$.  Then  the  Hilbert space of $\e$ is $\h_\a\bigoplus \h_\b$, where $\e$ is a super-operator with Kraus operator $\{diag(A_k,B_k)\}_{k=1}^d$. Obviously, $\h_\a$ and $\h_\b$ are both minimal subspaces under $\e$. Then the result is direct from Lemma~\ref{lem_block_eq}. 
 
@@ -1065,9 +1072,9 @@ By the definition, $\a$ and $\b$ are repeated, then $|\a\rangle_{n}=e^{in\theta}
 
 By the above theorem, repeatability  can be easily checked by computing eigenvalues of a linear map, which is a linear algebra exercise.  
 \section{Conclusion}
-In this paper, we established a structure theory of decoherence-free subsystems. Consequently, an algorithm for finding all such subsystems had been developed. Then we gave a simple way to pick up the faulty-tolerant ones from them. After that, these results helped us find a basis for any tensor by computing the eigenvalues for some constructed linear maps. 
+In this paper, we established a structure theory for decoherence-free subsystems. Consequently, an algorithm for finding an optimal set of decoherence-free subsystems had been developed. Then we gave a simple way to pick up the faulty-tolerant decoherence-free subsystems. After that, these results helped us find a basis for any tensor by computing the eigenvalues for some constructed linear maps. 
 
-For future studies, an immediate topic is to generalize our results to continuous-time quantum systems. In \cite{ticozzi2008quantum}, authors  studied this in quantum control setting and expected to find a linear-algebraic approach for finding all decoherence-free subsystems  for a given generator, describing the system. 
+For future studies, an immediate topic is to generalize our results to continuous-time quantum systems. In \cite{ticozzi2008quantum}, authors  studied this in quantum control setting and expected to obtain a linear-algebraic approach for finding all decoherence-free subsystems  for a given generator, describing the system.
 \section*{Acknowledgment}
 
 
