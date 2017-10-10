@@ -876,13 +876,13 @@ With Corollary~\ref{cor_cc_eq}, we can group together minimal subspaces by conti
 
 \begin{theorem}\label{Theo_CC_dec}
   Let $\e$ be a super-operator on $\h$. There is a unique  orthogonal decomposition of $\h$
-  \begin{eqnarray}\label{Eq_NS_dec_unique}
+  \begin{eqnarray}\label{Eq_unique}
     \h=\bigoplus_{l=1}^{L}\x_l\bigoplus \k.
   \end{eqnarray}
   where \begin{itemize}
     \item[(1)] $\k$ is the largest transient subspace;
     \item[(2)] each $\x_l$ is either a minimal subspace or can be further decomposed into mutually orthogonal minimal subspaces with continuous coherences between any two of them:
-    \begin{eqnarray}\label{Eq_NS_dec}
+    \begin{eqnarray}\label{Eq_dec_CC}
       \x_l=\bigoplus_{p=1}^{m_l}\b_{l,p}\simeq\mathbb{C}^{m_l}\bigotimes \b_l, 
     \end{eqnarray} 
    where for all $p$, $\b_l\simeq \b_{l,p}$. Furthermore, the Kraus operators $\{E_k\}$ of $\e$ have a corresponding block form:
@@ -952,15 +952,18 @@ $$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k,$$ for any minimal
    Let $\e$ be a super-operator  on $\h$ with the unique decomposition:
 $$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k,$$
 presented in Theorem~\ref{Theo_CC_dec}. Then 
-    subsystem $\h_A$ is decoherence-free if and only if $\h_A\subseteq\mathbb{C}^{m_l}$ for some $l$ and $\h_A$ is a decoherence-free subspace under $\u_l(\cdot)=U_{l}\cdot U_l^\dagger$, where $U_l$ is the corresponding unitary matrix on $\mathbb{C}^{m_l}$ in the decomposition Eq.(\ref{Eq_CC_dec_Kraus}).
+    subsystem $\h_A$ is decoherence-free if and only if $\h_A\subseteq\mathbb{C}^{m_l}$ for some $l$ and $\h_A$ is a decoherence-free subspace under $\u_l(\cdot)=U_{l}\cdot U_l^\dagger$ \yf{isn't it equivalent to say $\h_A$ is invariant under $\u_l$ $(\u_l(\h_A)\subseteq \h_A)$?}, where $U_l$ is the corresponding unitary matrix on $\mathbb{C}^{m_l}$ in the decomposition Eq.(\ref{Eq_CC_dec_Kraus}). \yf{The presentation is not clear. You mean
+    `$\h_A$ is decoherence-free if and only if $\h_A\subseteq\mathbb{C}^{m_l}$ for some $l$. Furthermore, $\h_A$ is a decoherence-free subspace under $\u_l(\cdot)=U_{l}\cdot U_l^\dagger$',
+   or  `$\h_A$ is decoherence-free if and only if (1) $\h_A\subseteq\mathbb{C}^{m_l}$ for some $l$; (2) $\h_A$ is a decoherence-free subspace under $\u_l(\cdot)=U_{l}\cdot U_l^\dagger$'?
+ }
  \end{theorem}
  {\it Proof.} Assume that $\h_A$ is decoherence-free. By Theorem~\ref{Theo_CC_dec} and Corollary~\ref{Cor_mini}, $\h_A\subseteq \mathbb{C}^{m_l}$ for some $l.$ From the definition of decoherence-free subsystems and the restriction of $\e$ onto $\mathbb{C}^{m_l}$ being  $\u_l$, $\h_A$ is a decoherence-free subspace under $\u_l$. 
 
- On the other hand, it is direct from Theorem~\ref{Theo_CC_dec}. $\hfill$ $\Box$
+The other direction is direct from Theorem~\ref{Theo_CC_dec}. $\hfill$ $\Box$
 
-These theorem confirms that the set of decoherence-free subsystems identified in Theorem~\ref{Theo_CC_dec} is the largest ones; that is any other is a subspace of one of them. So we only need to implement the decompositions in Theorem~\ref{Theo_CC_dec} and all decoherence-free subsystems can  be easily found by Theorem~\ref{Theo_find_DFS}.
+These \yf{This?} theorem confirms that the set of decoherence-free subsystems identified in Theorem~\ref{Theo_CC_dec} is the largest ones \yf{rewrite this sentence}; that is any other is a subspace of one of them. So we only need to implement the decompositions in Theorem~\ref{Theo_CC_dec} and all decoherence-free subsystems can  be easily found by Theorem~\ref{Theo_find_DFS}.
 
-The easy way to do this is transforming all continuous coherences to be stationary and we can use NSDecompose($\h,\e$) to get the results in Theorem~\ref{Theo_CC_dec}. 
+One easy way of achieving this is to first transform all continuous coherences to stationary ones, and then use NSDecompose($\h,\e$) proposed already in the literature. 
 
 For any two operators $E_{k,p}$ and $E_{k,q}$ in Eq.(\ref{Eq_CC_dec_Kraus}) of Theorem~\ref{Theo_CC_dec}, if they are unitarily equivalent with a phase $\theta$, i.e. $E_{k,p}\simeq e^{i\theta}E_{k,q}$, then 
  let $E'_{k,q}=e^{i\theta}E_{k,q}$ and $E'_{k,p}=E_{k,p}$. Then $E'_{k,p}$ is unitarily equivalent to $E'_{k,q}$; a continuous coherence is transformed to be stationary. Using this method, we develop Algorithm 1 to implement decompositions in Theorem~\ref{Theo_CC_dec} and the time complexity is $O(n^8)$. 
@@ -1017,16 +1020,16 @@ If $\h_A$ is decoherence-free, then the required initial state $\rho$ in Definit
  \begin{definition}
    Let $\e$ be a super-operator on $\h=\h_A\bigotimes\h_B\bigoplus\k $.
    $\h_A$ is a decoherence-free subsystem if for any $\rho\in D(\h)$ with $P_{AB}\rho P_{AB}\not =0$, $$\textrm{tr}_{B}[\e(P_{AB}\rho P_{AB})]=U\textrm{tr}_{B}[(P_{AB}\rho P_{AB})]U^\dagger,$$
-   where $P_{AB}$ is the projector onto $\h_A\bigotimes \h_B$.
+   where $P_{AB}$ is the projector onto $\h_A\bigotimes \h_B$. \yf{It's not a good idea to \emph{redefine} a concept in the same paper: it'll cause confusion}
  \end{definition}
 
-In the new definition, we do not need the reduced state $\rho_{AB}$ is a valid state, since its trance \yf{trace!!} might be less than one. But the quantum  information stored in $\h_A$ is preserved, i.e. the evolution on $\h_A$ is unitary. We say that perfect initialization occurs when $\rho'=0$ and $\rho_{\k}=0$; otherwise imperfect initialization. The results of \cite{shabani2005theory} have shown that in perfect initialization, $\h_A$ is decoherence-free if and only if the Kraus operators $\{E_k\}_k$ have the matrix representation:
+In the new definition, we do not need the reduced state $\rho_{AB}$ is \yf{to be!} a valid state, since its trance \yf{trace!!} might be less than one. But the quantum  information stored in $\h_A$ is preserved, i.e. the evolution on $\h_A$ is unitary \yf{according to my understanding, if the evolution on $\h_A$ is unitary, then $\h_A$ should be decoherence-free. It has nothing to do with the initial state!}. We say that perfect initialization occurs when $\rho'=0$ and $\rho_{\k}=0$; otherwise imperfect initialization. The results of \cite{shabani2005theory} have shown that in perfect initialization, $\h_A$ is decoherence-free if and only if the Kraus operators $\{E_k\}_k$ have the matrix representation:
 $$E_{k}=\left [\begin{matrix}
   U\otimes E'_{k}&T_k\\
   0&K_k
 \end{matrix}\right]$$
-; in imperfect initialization, we further need  $T_{k}=0$ for all $k$.
-Obviously, co-subsystem $\h_B$ is important in later case, but is inessential in former case as the initial state is prepared in $\h_A\bigotimes \h_B$ and $\h_B$ can be tranced  \yf{traced!!} over. Therefore, for fault-tolerant computation, we should choose decoherence-free subsystem under imperfect initialization.  
+; \yf{bad to have ; in the beginning} in imperfect initialization, we further need  $T_{k}=0$ for all $k$ \yf{why?}.
+Obviously, co-subsystem $\h_B$ is important in later case, but is inessential in former case as the initial state is prepared in $\h_A\bigotimes \h_B$ and $\h_B$ can be tranced  \yf{traced!!} over. Therefore, for fault-tolerant computation, we should choose decoherence-free subsystem under imperfect initialization.  \yf{why we `should' do it?} \yf{again, decoherence-free subsystem \emph{under imperfect initialization} is meaningless to me}
 \begin{definition}\label{Def_new_dfs}
   Let $\e$ be a super-operator on $\h$.  Subsystem $\h_A$  is a fault-tolerant decoherence-free subsystem if there exist a co-subsystem $\h_B$, i.e. $\h=\h_A\bigotimes \h_B\bigoplus\k$, such that $\h_A$ is a decoherence-free subsystem under imperfect initialization. \yf{I don't quite understand the definition here. what is a `decoherence-free subsystem under imperfect initialization'?}
 \end{definition}
@@ -1047,12 +1050,12 @@ The above theorem tells us a fact that the co-subsystems identified in Eq.(\ref{
 we can use the co-subsystem $\h'$ to verify that  $\mathbb{C}^4$ is not faulty-tolerant.
  
 \section{Basis of Matrix Product States}
-Matrix Product States (MPS), a special case of tensor networks (a theoretical and numerical tool describing quantum many-body systems), have proven to be an \yf{a!} useful family of quantum states for describing ground states of  one-dimensional quantum many-body systems, which is not scalable due to the exponential growth of the Hilbert space dimension with the number of subsystems \cite{cirac2017matrix}.  
+Matrix Product States (MPS), a special case of tensor networks (a theoretical and numerical tool describing quantum many-body systems), have proven to be an \yf{a!} useful family of quantum states for describing ground states of  one-dimensional quantum many-body systems, which \yf{`which' means what?} is not scalable due to the exponential growth of the Hilbert space dimension with the number of subsystems \cite{cirac2017matrix}.  
 
-Given a  tenor \yf{tensor!!} $\a=\{A_{k}\in \mathcal{M}_D\}_{k=1}^{d}$, where $\mathcal{M}_{D}$ denotes $D\times D$ complex matrices, $d$ is the physical dimension of a Hilbert space $\h_d$ described by a set of mutually orthogonal pure states $\{|k\rangle\}_{k=1}^{d}$, and $D$ is the bond dimension, it generates a family of translationally invariant MPS, namely
+Given a  tenor \yf{tensor!!} $\a=\{A_{k}\in \mathcal{M}_D\}_{k=1}^{d}$, where $\mathcal{M}_{D}$ denotes $D\times D$ complex matrices, $d$ is the physical dimension \yf{what does `physical dimension' mean?} of a Hilbert space $\h_d$ described \yf{described?} by a set of mutually orthogonal pure states $\{|k\rangle\}_{k=1}^{d}$, and $D$ is the bond dimension \yf{what is a `bond dimension'?}, it generates a family of translationally invariant MPS, namely
 $$V(\a)=\{|V_{n}(\a)\rangle\}_{n\in \mathbb{N^+}},$$
 where $$|V_{n}(\a)\rangle=\sum_{k_1,\cdots,k_n=1}^{d}\textrm{tr}(A_{k_1}\cdots A_{k_n})|k_1\cdots k_{n}\rangle\in\h_d^{\otimes n}$$
-Then we can get a \yf{an} associated completely positive map $\e_\a(\cdot)=\sum_{k=1}^{d}A_{k}\cdot A_{k}^\dagger$.
+Then we can define a \yf{an} associated completely positive map $\e_\a(\cdot)=\sum_{k=1}^{d}A_{k}\cdot A_{k}^\dagger$.
 
 By \cite{cuevas2017irreducible}, we can always find a set of irreducible tensors $\{\a_{j}\}_{j=1}^{m}$ with the same physical dimension $d$, and a set of complex number $\{\mu_{j}\}_{j=1}^{m}$ such that for any $n\in\mathbb{N^{+}}$
 \begin{eqnarray}\label{Eq_MPS}
@@ -1066,17 +1069,17 @@ First, we can group irreducible tensors that are essentially the same in the fol
   $$A_{k}=e^{i\theta}UB_kU^\dagger \ \forall k$$
 \end{definition}
 
-By the definition, $\a$ and $\b$ are repeated, then $|\a\rangle_{n}=e^{in\theta}|\b\rangle_{n}$ for all $n\in \mathbb{N^+}$. Therefore, for any tensor $\a$, we can reduce the set of irreducible tensors  in Eq.(\ref{Eq_MPS}) to be non-repeated. Such simplified set is called a basis of $\a$. The fundamental problem, which relates different tensors rising the same MPS, can be answered by the basis \yf{rewrite this sentence}. That is if two tensors have the same MPS, then their basis must be related by a unitary transform \cite{cuevas2017irreducible}. Therefore, determining whether two irreducible tensors are  repeated or not  is a key problem. Even though, such repeatability relation can be verified by Jordan decompositions of matrices by the definition, Jordan decompositions is sensitive to errors and should be avoided in numerical analysis of many body systems. Here we propose a feasible method to finish this by the results of continuous coherences in previous sections. 
+By the definition, $\a$ and $\b$ are repeated, then $|\a\rangle_{n}=e^{in\theta}|\b\rangle_{n}$ for all $n\in \mathbb{N^+}$. Therefore, for any tensor $\a$, we can reduce the set of irreducible tensors  in Eq.(\ref{Eq_MPS}) to be non-repeated. Such a simplified set is called a basis of $\a$. The fundamental problem, which relates different tensors rising the same MPS, can be answered by the basis \yf{rewrite this sentence}. That is, if two tensors have the same MPS, then their basis must be related by a unitary transform \cite{cuevas2017irreducible}. Therefore, determining whether two irreducible tensors are  repeated or not  is a key problem. Even though such repeatability relation can be verified by Jordan decompositions of matrices by the definition, Jordan decompositions is sensitive to errors and should be avoided in numerical analysis. Here we propose a feasible method to achieve this by the results of continuous coherences in previous sections. 
 \begin{theorem}
   Given two irreducible tensors with the same physical dimension $d$, $\a=\{A_{k}\}_{k=1}^{d}$ and $\b=\{B_{k}\}_{k=1}^{d}$, they are repeated if and only if $\lambda(\e_{\a,\b})$ has an element with magnitude one, where $\e_{\a,\b}=\sum_{k=1}^d A_{k}\cdot B_{k}^\dagger.$
 \end{theorem}
-{\it Proof.} Let $\h_\a$ and $\h_\b$ be the corresponding Hilbert spaces of tensors $\a$ and $\b$, respectively; That is $A_k\in B(\h_\a)$ and $B_k\in B(\h_\b)$ for all $k$.  Then  the  Hilbert space of $\e$ is $\h_\a\bigoplus \h_\b$, where $\e$ is a super-operator with Kraus operator $\{diag(A_k,B_k)\}_{k=1}^d$. Obviously, $\h_\a$ and $\h_\b$ are both minimal subspaces under $\e$. Then the result is direct from Lemma~\ref{lem_block_eq}. 
+{\it Proof.} Let $\h_\a$ and $\h_\b$ be the corresponding Hilbert spaces of tensors $\a$ and $\b$, respectively; That \yf{that!} is $A_k\in B(\h_\a)$ and $B_k\in B(\h_\b)$ for all $k$.  Then  the  Hilbert space of $\e$ is $\h_\a\bigoplus \h_\b$, where $\e$ is a super-operator with Kraus operator $\{diag(A_k,B_k)\}_{k=1}^d$. Obviously, $\h_\a$ and $\h_\b$ are both minimal subspaces under $\e$. Then the result is direct from Lemma~\ref{lem_block_eq}. 
 
 \hfill $\Box$
 
 By the above theorem, repeatability  can be easily checked by computing eigenvalues of a linear map, which is a linear algebra exercise.  
 \section{Conclusion}
-In this paper, we established a structure theory for decoherence-free subsystems. Consequently, an algorithm for finding an optimal set of decoherence-free subsystems had been developed. Then we gave a simple way to pick up the faulty-tolerant decoherence-free subsystems. After that, these results helped us find a basis for any tensor by computing the eigenvalues for some constructed linear maps. 
+In this paper, we established a structure theory for decoherence-free subsystems. Consequently, an algorithm for finding an optimal set of decoherence-free subsystems had \yf{has!} been developed. Then we gave a simple way to pick up the faulty-tolerant decoherence-free subsystems. After that, these results helped us find a basis for any tensor by computing the eigenvalues of some constructed linear maps. 
 
 For future studies, an immediate topic is to generalize our results to continuous-time quantum systems. In \cite{ticozzi2008quantum}, authors  studied this in quantum control setting and expected to obtain a linear-algebraic approach for finding all decoherence-free subsystems  for a given generator, describing the system.
 \section*{Acknowledgment}
