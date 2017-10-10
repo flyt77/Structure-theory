@@ -936,8 +936,9 @@ where $U_l=diag(e^{i\theta_{l,1}},\cdots,e^{i\theta_{l,m_l}})$ for a set of real
 $$fix(\e)=\oplus_l[fix(\u_{l})\otimes \rho_l]\oplus 0_\k.$$ 
 where $\rho_l$ is the unique stationary state of $\e_l.$ \hfill $\Box$
 \begin{corollary}\label{Cor_mini}
-  Let $\e$ be a super-operator  on $\h$. In a decomposition of $\h$ in Eq.(\ref{Eq_dec_CC}) :
-$$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k,$$ for any minimal subspace $\h'$, there is a pure state $|\psi\rangle\in \mathbb{C}^{m_l}$ for some $l$ such that $\h'=\textrm{supp}(|\psi\rangle\langle \psi|)\otimes \b_l$. 
+  Let $\e$ be a super-operator  on $\h$ with unique decomposition:
+$$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k$$
+presented in Theorem~\ref{Theo_CC_dec}, for any minimal subspace $\h'$, there is a pure state $|\psi\rangle\in \mathbb{C}^{m_l}$ for some $l$ such that $\h'=\textrm{supp}(|\psi\rangle\langle \psi|)\otimes \b_l$. 
 \end{corollary}
 
 %Let $A\in\b(\h)$ and $\e(A)=e^{i\theta}A$ for some $\theta$. Then $A\in B(\k^\perp)$ by \cite[Lemma 2]{guan2017super}. From the definition of continuous coherences, we have that $A=\bigoplus_l \bar{A}_l$ with $\in B(\mathbb{C}^m_l\bigotimes \b_l)$,  and $\sum_{k}U_l\otimes E_{k,l} \bar{A}_l U_l^\dagger\otimes E_{k,l}^\dagger=e^{i\theta}\bar{A}_l$. As $U_l$ is diagonal, $\bar{A}_l=$ 
@@ -1029,8 +1030,9 @@ Obviously, co-subsystem $\h_B$ is important in later case, but is inessential in
 
 In the last section, we have obtained a way to compute all decoherence-free subsystem under perfect initialization. Now we need choose faulty-tolerant ones from them.
 \begin{theorem}\label{Theo_check_FT}
-  Let $\e$ be a super-operator  on $\h$. In a decomposition of $\h$ in Eq.(\ref{Eq_dec_CC}) :
-$$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\oplus \k,$$ 
+  Let $\e$ be a super-operator  on $\h$. In its unique decomposition:
+$$\h=\bigoplus_l(\mathbb{C}^{m_l}\bigotimes \b_l)\bigoplus \k$$
+presented in Theorem~\ref{Theo_CC_dec}, 
 $\h_A$ is a fault-tolerant decoherence-free subsystem if and only if $\h_A\subseteq \mathbb{C}^{m_l}$ for some $l$ and $\h_A$ is a decoherence-free subsystem under imperfect initialization of $\h=\h_A\bigotimes \b_l\bigoplus \k'$, where $\k'=(\h_A\bigotimes \b_l)^{\perp}.$
 \end{theorem}
 {\it Proof.} The sufficient part is direct from Definition~\ref{Def_new_dfs} and Theorem~\ref{Theo_find_DFS}.
