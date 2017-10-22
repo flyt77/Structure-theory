@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.20)  18 OCT 2017 04:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6300 64-bit) (preloaded format=pdflatex 2017.5.20)  23 OCT 2017 00:48
 entering extended mode
 **C:/Users/guanj/Documents/GitHub/Structure-theory/bare_jrnl.tex
 (C:/Users/guanj/Documents/GitHub/Structure-theory/bare_jrnl.tex
@@ -240,18 +240,18 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
  (bare_jrnl.aux)
 \openout1 = `bare_jrnl.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 560.
-LaTeX Font Info:    ... okay on input line 560.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 560.
-LaTeX Font Info:    ... okay on input line 560.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 560.
-LaTeX Font Info:    ... okay on input line 560.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 560.
-LaTeX Font Info:    ... okay on input line 560.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 560.
-LaTeX Font Info:    ... okay on input line 560.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 560.
-LaTeX Font Info:    ... okay on input line 560.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 222.
+LaTeX Font Info:    ... okay on input line 222.
 
 -- Lines per column: 58 (exact).
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
@@ -268,31 +268,19 @@ LaTeX Font Info:    ... okay on input line 560.
 \makeMPintoPDFobject=\count125
 \everyMPtoPDFconversion=\toks25
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 698.
+LaTeX Font Info:    Try loading font information for U+msa on input line 266.
  ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 698.
+LaTeX Font Info:    Try loading font information for U+msb on input line 266.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 
-]
-Underfull \hbox (badness 1762) in paragraph at lines 732--734
-\OT1/ptm/m/n/10 as (outer) co-her-ences from $\OMS/cmsy/m/n/10 H[]$ \OT1/ptm/m/
-n/10 to $\OMS/cmsy/m/n/10 H[]$\OT1/ptm/m/n/10 , i.e. up-per off-
- []
-
-
-Underfull \hbox (badness 2837) in paragraph at lines 742--744
-[][]\OT1/ptm/m/it/10 Definition 2: []\OT1/ptm/m/n/10 Let $\OMS/cmsy/m/n/10 E$ \
-OT1/ptm/m/n/10 be a super-operator on $\OMS/cmsy/m/n/10 H \OT1/cmr/m/n/10 =
- []
-
-[2] [3]
-Underfull \hbox (badness 1377) in paragraph at lines 930--933
+] [2] [3]
+Underfull \hbox (badness 1377) in paragraph at lines 496--499
 \OT1/ptm/m/n/10 for some op-er-a-tors $\OML/cmm/m/it/10 E[] \OMS/cmsy/m/n/10 2 
 L\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 B[]\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/10 , $\OML
 /cmm/m/it/10 K[] \OMS/cmsy/m/n/10 2 L\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 K\OT1/cm
@@ -300,41 +288,33 @@ r/m/n/10 )$\OT1/ptm/m/n/10 ,
  []
 
 
-Underfull \hbox (badness 7963) in paragraph at lines 930--933
+Underfull \hbox (badness 7963) in paragraph at lines 496--499
 \OML/cmm/m/it/10 T[] \OMS/cmsy/m/n/10 2 L\OT1/cmr/m/n/10 (\OMS/cmsy/m/n/10 K\OM
 L/cmm/m/it/10 ; \OMS/cmsy/m/n/10 K[]\OT1/cmr/m/n/10 )$\OT1/ptm/m/n/10 , and uni
 -tary ma-trix $\OML/cmm/m/it/10 U[] \OT1/cmr/m/n/10 =
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 1046--1047
-[]\OT1/ptm/m/n/10 Obviously, if $\OMS/cmsy/m/n/10 H[]$ \OT1/ptm/m/n/10 is decoh
-erence-free in $\OMS/cmsy/m/n/10 H \OT1/cmr/m/n/10 =
- []
-
-
-Underfull \hbox (badness 1540) in paragraph at lines 1046--1047
-\OMS/cmsy/m/n/10 H[] [] H[] [] Y$ \OT1/ptm/m/n/10 with $\OMS/cmsy/m/n/10 Y \OT1
-/cmr/m/n/10 = (\OMS/cmsy/m/n/10 H[] [] H[]\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 
-6\OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ;$\OT1/ptm/m/n/10 , then
+Underfull \hbox (badness 7595) in paragraph at lines 601--602
+[]\OT1/ptm/m/n/10 In a per-fect ini-tial-iza-tion, the co-subsystem of a
  []
 
 [5]
-Underfull \hbox (badness 2302) in paragraph at lines 1085--1086
+Underfull \hbox (badness 2302) in paragraph at lines 655--656
 []\OT1/ptm/m/n/10 In this pa-per, we es-tab-lished a struc-ture the-ory for
  []
 
-(bare_jrnl.bbl [6]) [7
+[6] (bare_jrnl.bbl) [7
 
 ] (bare_jrnl.aux) ) 
 Here is how much of TeX's memory you used:
  3221 strings out of 493324
  45288 string characters out of 3139088
- 121503 words of memory out of 3000000
+ 123503 words of memory out of 3000000
  6744 multiletter control sequences out of 15000+200000
  41250 words of font info for 77 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 27i,19n,26p,1141b,601s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,19n,26p,1110b,601s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:
 /Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program
  Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/M
@@ -351,7 +331,7 @@ iKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm7.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1
 /urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8
 a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bare_jrnl.pdf (7 pages, 226756 bytes).
+Output written on bare_jrnl.pdf (7 pages, 227277 bytes).
 PDF statistics:
  95 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
